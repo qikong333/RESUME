@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2>插入好多</h2>
+    </div>
+</body>
+<script>
+    // console.time('time');
+    // var box = document.querySelector('div');
+    // for (var i = 0; i < 2000; i++) {
+    //     var ref = "<span>" + i + ",</span>";
+    //     if (i % 40 === 0) {
+    //         ref += "<br>"
+    //     }
+    //     box.innerHTML += ref;
+    // }
+    // console.timeEnd('time');
+</script>
+<script>
+    console.time('time');
+    var count = 2000;
+    var size = 40;
+    var chunkSize = count / size;
+    var init = 0;
+    var box = document.querySelector('div');
+
+    var render = function() {
+        setTimeout(function append() {
+            var base = chunkSize * init;
+            for (var i = 0; i < size; i++) {
+                var ref = "<span>" + (i + init * size) + ",</span>";
+                if (i % 40 === 0) {
+                    ref += "<br>"
+                }
+                box.innerHTML += ref;
+            };
+            init++;
+            if (init < chunkSize) {
+                render();
+            }
+        }, 0);
+    }
+    setTimeout(function() {
+        console.log(1)
+    });
+
+    function x() {
+        console.log(2)
+    }
+    x();
+    render();
+    console.timeEnd('time');
+</script>
+
+</html>

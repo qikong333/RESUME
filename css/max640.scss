@@ -28,6 +28,15 @@
         }
     }
     .box3 {
+        .box30,
+        .box31 {
+            width: 100% !important;
+            ul {
+                li {
+                    width: 100% !important;
+                }
+            }
+        }
         p.dd {
             &::after {
                 width: 90% !important;
